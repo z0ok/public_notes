@@ -58,3 +58,19 @@ chisel client --auth test:test 192.168.1.1:10777 R:18080:socks
 curl --proxy socks5://127.0.0.1:18080 http://127.0.0.1:[ANY]
 curl --proxy socks5://127.0.0.1:18080 http://127.0.0.1:8080
 ```
+
+# Setting up auth
+
+You can use --auth param, but it's kinda insecure. Use ENV instead. According to spec:
+
+```
+--auth, ... If unset, it will use the environment variable AUTH.
+```
+
+So, just do:
+
+```
+### CMD
+set AUTH=test:test
+chisel client 192.168.1.1:10777 R:18080:socks
+```
